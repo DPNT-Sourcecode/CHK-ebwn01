@@ -65,8 +65,3 @@ def checkout(skus):
     return total
 
 print(checkout("EEBFF"))  # Output should be 80
-
-
-
-
-
