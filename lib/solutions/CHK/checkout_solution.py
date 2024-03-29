@@ -13,7 +13,7 @@ def checkout(skus):
     }
 
     offers = {
-        'A': [(3,130), (5,200)],
+        'A': [(5,200), (1,130)],
         'B': [(2,45)],
         'C': None,
         'D': None,
@@ -37,15 +37,17 @@ def checkout(skus):
         offer = offers[x]
 
         if offer:
-            quantity_needed, reduced_price = offer
-            discounted_amount = (count // quantity_needed) * reduced_price
-            reminder_items = count % quantity_needed
-            regular_price = reminder_items * price
-            total += discounted_amount + regular_price
+            for various_offer in offer:
+                quantity_needed, reduced_price = offer
+                discounted_amount = (count // quantity_needed) * reduced_price
+                reminder_items = count % quantity_needed
+                regular_price = reminder_items * price
+                total += discounted_amount + regular_price
         # if we dont have offer
         else:
             total += count * price
     return total
 
 print(checkout("ABCDABCD"))
+
 
