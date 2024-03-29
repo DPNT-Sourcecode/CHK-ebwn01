@@ -40,16 +40,18 @@ def checkout(skus):
             for offer_info in offer:
                 if isinstance(offer_info[1], int):
                     quantity_needed, reduced_price = offer_info
-                    discounted_amount = (count // quantity_needed) * reduced_price
+                    discounted_sets = (count // quantity_needed) 
                     reminder_items = count % quantity_needed
-                    regular_price = reminder_items * price
-                    total += discounted_amount + regular_price
+                    total += discounted_sets * reduced_price
+                    count = reminder_items
+            total += count * prices[x]
         # if we dont have offer
         else:
             total += count * price
     return total
 
-print(checkout("AAAAA"))
+print(checkout("AAA"))
+
 
 
 
