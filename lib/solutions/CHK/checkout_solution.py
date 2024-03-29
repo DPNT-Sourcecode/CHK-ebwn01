@@ -57,5 +57,6 @@ def checkout(skus):
 
     return total
 
-print(checkout("FFF"))  # Output should be 80
+print(checkout("EEB"))  # Output should be 80
+
 
