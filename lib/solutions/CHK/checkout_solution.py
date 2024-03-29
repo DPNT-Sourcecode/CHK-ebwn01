@@ -56,7 +56,6 @@ def checkout(skus):
                         free_items_to_deduct = min(counts.get('F', 0) // required_quantity, counts[free_item])
                         counts[free_item] -= free_items_to_deduct
                         print(counts)
-                        # Update the count of purchased Es accordingly
                         counts['F'] -= free_items_to_deduct * required_quantity
             total += count * price  # Add remaining items at regular price
         else:
@@ -64,7 +63,7 @@ def checkout(skus):
 
     return total
 
-print(checkout("EEBFFF"))  # Output should be 80
+print(checkout("EEBFF"))  # Output should be 80
 
 
 
