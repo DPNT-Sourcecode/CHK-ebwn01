@@ -1,4 +1,6 @@
 def checkout(skus):
+    skus = ''.join(sorted(skus))
+    skus.reverse()
     # Prices of individual items
     prices = {
         'A': 50,
@@ -54,6 +56,7 @@ def checkout(skus):
     return total
 
 print(checkout("EEEEB"))  # Output should be 80
+
 
 
 
