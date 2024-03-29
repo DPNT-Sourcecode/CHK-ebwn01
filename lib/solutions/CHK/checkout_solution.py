@@ -44,12 +44,18 @@ def checkout(skus):
                     count = reminder_items
                 else:
                     quantity_needed, free_item = offer_info
+                    print(free_item)
+                    print(quantity_needed)
                     if free_item in counts and count >= quantity_needed:
-                        counts[free_item] -= 1
+                        amount_to_remove = count // counts[free_item]
+                        print(amount_to_remove)
+                        counts[free_item] -= amount_to_remove
+                        print(counts)
             total += count * price
         # if we dont have offer
         else:
             total += count * price
     return total
 
-print(checkout("AAAAAEEB"))
+print(checkout("EEEEBB"))
+
