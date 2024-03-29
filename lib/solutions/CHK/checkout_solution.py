@@ -46,17 +46,17 @@ def checkout(skus):
                     count = reminder_items
                 else:
                     required_quantity, free_item = offer_info
-                    if free_item in counts and counts[free_item] >= count //required_quantity:
-                        free_items_to_deduct = count // required_quantity
-                        counts[free_item] -= free_items_to_deduct
-                        count -= free_items_to_deduct * required_quantity
+                    if free_item in counts and counts[free_item] >= required_quantity:
+                        free_items_to_deduct = min(counts[free_item])// required_quantity, count)
+                        counts[free_item] -= free_items_to_deduct * required_quantity
+                        count -= free_items_to_deduct 
             total += count * prices[x]
         # if we dont have offer
         else:
             total += count * price
     return total
 
-print(checkout("EEB"))
+print(checkout("EE"))
 
 
 
