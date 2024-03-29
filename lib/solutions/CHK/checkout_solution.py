@@ -8,14 +8,16 @@ def checkout(skus):
         'A': 50,
         'B': 30,
         'C': 20,
-        'D': 15
+        'D': 15,
+        'E': 40
     }
 
     offers = {
-        'A': (3,130),
-        'B': (2,45),
+        'A': [(5,200), (3,130)],
+        'B': [(2,45)],
         'C': None,
-        'D': None
+        'D': None,
+        'E': [(2,"E")]
     }
 
     # iterate through input string and count number of each unique sku
@@ -44,6 +46,7 @@ def checkout(skus):
         else:
             total += count * price
     return total
+
 
 
 
