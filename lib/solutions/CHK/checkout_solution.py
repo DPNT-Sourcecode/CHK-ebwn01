@@ -27,14 +27,12 @@ def checkout(skus):
     
     total = 0
     # input validation:
-    for x, count in counts.items():
-        if x not in prices:
+    for item, count in counts.items():
+        if item not in prices:
             return -1
         
-        # get price
-        price = prices[x]
-        # get special offer if any
-        offer = offers[x]
+        price = prices[item]
+        offer = offers[item]
 
         if offer:
             for offer_info in offer:
@@ -44,13 +42,14 @@ def checkout(skus):
                     reminder_items = count % quantity_needed
                     total += discounted_sets * reduced_price
                     count = reminder_items
-            total += count * prices[x]
+            total += count * price
         # if we dont have offer
         else:
             total += count * price
     return total
 
 print(checkout("AAA"))
+
 
 
 
