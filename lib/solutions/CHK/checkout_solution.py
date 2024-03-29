@@ -7,7 +7,8 @@ def checkout(skus):
         'B': 30,
         'C': 20,
         'D': 15,
-        'E': 40
+        'E': 40,
+        'F': 10, 
     }
 
     # Special offers
@@ -16,7 +17,8 @@ def checkout(skus):
         'B': [(2, 45)],
         'C': None,
         'D': None,
-        'E': [(2, 'B')]
+        'E': [(2, 'B')],
+        'F': [(2, 'F')],
     }
 
     # Count occurrences of each item
@@ -45,14 +47,15 @@ def checkout(skus):
                     required_quantity, free_item = offer_info
                     if free_item in counts and counts[free_item] > 0:
                         # Determine how many free Bs can be claimed based on purchased Es
-                        free_items_to_deduct = min(counts.get('E', 0) // required_quantity, counts[free_item])
+                        free_items_to_deduct = min(count // required_quantity, counts[free_item])
                         counts[free_item] -= free_items_to_deduct
                         # Update the count of purchased Es accordingly
-                        counts['E'] -= free_items_to_deduct * required_quantity
+                        count -= free_items_to_deduct * required_quantity
             total += count * price  # Add remaining items at regular price
         else:
             total += count * price
 
     return total
 
-print(checkout("ABCDEABCDE"))  # Output should be 80
+print(checkout("FFF"))  # Output should be 80
+
