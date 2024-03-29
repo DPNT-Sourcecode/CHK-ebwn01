@@ -17,7 +17,7 @@ def checkout(skus):
         'B': [(2,45)],
         'C': None,
         'D': None,
-        'E': [(2,"B")]
+        'E': [(2,"E")]
     }
 
     # iterate through input string and count number of each unique sku
@@ -37,26 +37,14 @@ def checkout(skus):
         offer = offers[x]
 
         if offer:
-            for offer_info in offer:
-                if isinstance(offer_info[1], int):
-                    quantity_needed, reduced_price = offer_info
-                    discounted_sets = (count // quantity_needed)
-                    reminder_items = count % quantity_needed
-                    total += discounted_sets * reduced_price
-                    count = reminder_items
-                else:
-                    required_quantity, free_item = offer_info
-                    if free_item in counts and counts[free_item] >= count //required_quantity:
-                        print("hy")
-                        free_items_to_deduct = count // required_quantity
-                        counts[free_item] -= free_items_to_deduct
-                        print(counts)
-                        # count -= free_items_to_deduct * required_quantity
-            total += count * prices[x]
+            quantity_needed, reduced_price = offer
+            discounted_amount = (count // quantity_needed) * reduced_price
+            reminder_items = count % quantity_needed
+            regular_price = reminder_items * price
+            total += discounted_amount + regular_price
         # if we dont have offer
         else:
             total += count * price
     return total
 
-print(checkout("EEB"))
 
