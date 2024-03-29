@@ -39,13 +39,14 @@ def checkout(skus):
             discounted_amount = (count // quantity_needed) * reduced_price
             reminder_items = count % quantity_needed
             regular_price = reminder_items * price
-            total = discounted_amount + regular_price
+            total += discounted_amount + regular_price
         # if we dont have offer
         else:
-            total = count * price
+            total += count * price
     return total
 
 print(checkout("ABCDABCD"))
+
 
 
 
