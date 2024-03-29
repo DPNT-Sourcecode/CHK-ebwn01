@@ -17,7 +17,7 @@ def checkout(skus):
         'B': [(2,45)],
         'C': None,
         'D': None,
-        'E': [(2,"E")]
+        'E': [(2,"B")]
     }
 
     # iterate through input string and count number of each unique sku
@@ -47,7 +47,7 @@ def checkout(skus):
                 else:
                     required_quantity, free_item = offer_info
                     if free_item in counts and counts[free_item] >= required_quantity:
-                        free_items_to_deduct = min(counts[free_item])// required_quantity, count)
+                        free_items_to_deduct = min(counts[free_item]// required_quantity, count)
                         counts[free_item] -= free_items_to_deduct * required_quantity
                         count -= free_items_to_deduct 
             total += count * prices[x]
@@ -56,7 +56,7 @@ def checkout(skus):
             total += count * price
     return total
 
-print(checkout("EE"))
+print(checkout(""))
 
 
 
