@@ -51,14 +51,13 @@ def checkout(skus):
                         to_deduct = count // required_amount
                         counts[free_item] -= to_deduct
                         count -= to_deduct * required_amount
-            to
-
-        # if we dont have offer
+            total += count * prices[x]
         else:
             total += count * price
     return total
 
 print(checkout("ABCDABCD"))
+
 
 
 
