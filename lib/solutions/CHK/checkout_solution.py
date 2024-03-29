@@ -45,6 +45,8 @@ def checkout(skus):
             total = count * price
     return total
 
+print(checkout("ABCDABCD"))
+
 
 
 
