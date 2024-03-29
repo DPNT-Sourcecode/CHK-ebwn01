@@ -38,16 +38,18 @@ def checkout(skus):
 
         if offer:
             for various_offer in offer:
-                quantity_needed, reduced_price = offer
-                discounted_amount = (count // quantity_needed) * reduced_price
-                reminder_items = count % quantity_needed
-                regular_price = reminder_items * price
-                total += discounted_amount + regular_price
+                if type(various_offer[1]) == int:  # noqa: E721
+                    quantity_needed, reduced_price = offer
+                    discounted_amount = (count // quantity_needed) * reduced_price
+                    reminder_items = count % quantity_needed
+                    regular_price = reminder_items * price
+                    total += discounted_amount + regular_price
         # if we dont have offer
         else:
             total += count * price
     return total
 
 print(checkout("ABCDABCD"))
+
 
 
