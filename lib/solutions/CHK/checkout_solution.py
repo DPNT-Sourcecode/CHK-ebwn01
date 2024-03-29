@@ -1,9 +1,5 @@
-
-# noinspection PyUnusedLocal
-# skus = unicode string
 def checkout(skus):
-
-    # need to establish a dict for the prices:
+    # Prices of individual items
     prices = {
         'A': 50,
         'B': 30,
@@ -12,21 +8,22 @@ def checkout(skus):
         'E': 40
     }
 
+    # Special offers
     offers = {
-        'A': [(5,200), (3,130)],
-        'B': [(2,45)],
+        'A': [(5, 200), (3, 130)],
+        'B': [(2, 45)],
         'C': None,
         'D': None,
-        'E': [(2,"B")]
+        'E': [(2, 'B')]
     }
 
-    # iterate through input string and count number of each unique sku
+    # Count occurrences of each item
     counts = {}
-    for x in set(skus):
-        counts[x] = skus.count(x)
+    for item in skus:
+        counts[item] = counts.get(item, 0) + 1
     
     total = 0
-    # input validation:
+    # Input validation:
     for item, count in counts.items():
         if item not in prices:
             return -1
@@ -36,24 +33,28 @@ def checkout(skus):
 
         if offer:
             for offer_info in offer:
-                if isinstance(offer_info[1], str):
-                    quantity_needed, free_item = offer_info
-                    if free_item in counts and counts[free_item] > 0:
-                        amount_to_remove = min(counts[free_item], count // quantity_needed)
-                        counts[free_item] -= amount_to_remove
-                else:
+                if isinstance(offer_info[1], int):  # Normal offer
                     quantity_needed, reduced_price = offer_info
-                    discounted_sets = (count // quantity_needed) 
+                    discounted_sets = count // quantity_needed 
                     reminder_items = count % quantity_needed
                     total += discounted_sets * reduced_price
                     count = reminder_items
-            total += count * price
-        # if we dont have offer
+                else:  # Special offer for item E
+                    required_quantity, free_item = offer_info
+                    if free_item in counts and counts[free_item] > 0:
+                        # Determine how many free Bs can be claimed based on purchased Es
+                        free_items_to_deduct = min(counts.get('E', 0) // required_quantity, counts[free_item])
+                        counts[free_item] -= free_items_to_deduct
+                        # Update the count of purchased Es accordingly
+                        counts['E'] -= free_items_to_deduct * required_quantity
+            total += count * price  # Add remaining items at regular price
         else:
             total += count * price
+
     return total
 
-print(checkout("EEB"))
+print(checkout("EEEEB"))  # Output should be 80
+
 
 
 
