@@ -25,7 +25,7 @@ def checkout(skus):
     
     total = 0
     # input validation:
-    for x, count in counts:
+    for x, count in counts.items():
         if x not in prices:
             return -1
         
@@ -44,7 +44,6 @@ def checkout(skus):
         else:
             total = count * price
     return total
-
 
 
 
