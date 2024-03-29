@@ -43,20 +43,21 @@ def checkout(skus):
                     reminder_items = count % quantity_needed
                     total += discounted_sets * reduced_price
                     count = reminder_items
-                elif offer_info[1] == 'B':
+                elif offer_info[1] == 'B' and item == 'E':
                     required_quantity, free_item = offer_info
                     if free_item in counts and counts[free_item] > 0:
                         free_items_to_deduct = min(counts.get('E', 0) // required_quantity, counts[free_item])
                         counts[free_item] -= free_items_to_deduct
                         # Update the count of purchased Es accordingly
                         counts['E'] -= free_items_to_deduct * required_quantity
-                elif offer_info[1] == 'F':
+                elif offer_info[1] == 'F' and item == 'F':
+                    print("ssss")
                     required_quantity, free_item = offer_info
                     if free_item in counts and counts[free_item] > 0:
                         free_items_to_deduct = min(counts.get('F', 0) // required_quantity, counts[free_item])
                         counts[free_item] -= free_items_to_deduct
-                        print(counts)
                         counts['F'] -= free_items_to_deduct * required_quantity
+            print(counts)
             total += count * price  # Add remaining items at regular price
         else:
             total += count * price
@@ -64,6 +65,7 @@ def checkout(skus):
     return total
 
 print(checkout("EEBFF"))  # Output should be 80
+
 
 
 
