@@ -44,7 +44,7 @@ def checkout(skus):
     product_counts = {}
     for item in sorted_reversed_skus:
         product_counts[item] = product_counts.get(item, 0) + 1
-
+    print(product_counts)
     total_price = 0
     # print(product_counts)
     # Iterate over each product and apply discounts
@@ -64,13 +64,9 @@ def checkout(skus):
                     if prod in product_counts:
                         num_of_eligible_items += product_counts[prod]
                 offer_count = num_of_eligible_items // offer_quantity
-                print(offer_count)
                 total_price += offer_count * offer_price
                 for prod in offered_items:
                     if prod in product_counts:
-                        if prod == product:
-                            count -= offer_count
-                        else:
                             product_counts[prod] -= offer_count
                 print(product_counts)
             else:
@@ -111,12 +107,13 @@ def checkout(skus):
 
 
 # Test cases
-print(checkout("SSS"))  # Output: 50
+print(checkout("SSSZZZYYYY"))  # Output: 50
 # print(checkout("FFF"))  # Output: 45
 # print(checkout("FFFF"))  # Output: 60
 # print(checkout("ABCD"))  # Output: 115
 # print(checkout("AAABB"))  # Output: 175
 # print(checkout("E"))  # Output: -1 (Illegal input)
+
 
 
 
