@@ -58,24 +58,12 @@ def checkout(skus):
         # Check if there are any special offers for this product
         for offer in offers:
             if len(offer) == 3:
-                offer_quantity, offer_price, offered_items = offer
-                num_of_eligible_items = 0
-                for prod in offered_items:
-                    if prod in product_counts:
-                         num_of_eligible_items += product_counts[prod]
-                offer_count = num_of_eligible_items // offer_quantity
-                print("offer can be applied: ", offer_count)
-                total_price += offer_count * offer_price
-                print("total price to add ", total_price)
-                # # set current product to 0
-                # count -= offer_count * offer_quantity
-                for prod in offered_items:
-                    if prod in product_counts:
-                        product_counts[prod] -= offer_count * offer_quantity
-                print(product_counts)
-                count = product_counts[product]
-                # print(product_counts)
-                # break
+                group_items = offer[2]
+                group_count = min(product_counts.get(item, 0) // offer[0], count)
+                group_discount_count = min(group_count, min(product_counts.get(group_item, 0) for group_item in group_items))
+                total_price += group_discount_count * offer[1]
+                count -= group_discount_count * offer[0]
+
             else:
                 offer_quantity, offer_item = offer
                 if offer_quantity <= count:
@@ -114,10 +102,11 @@ def checkout(skus):
 
 
 # Test cases
-print(checkout("SSSX"))  # Output: 50
+print(checkout("SSSXT"))  # Output: 50
 # print(checkout("FFF"))  # Output: 45
 # print(checkout("FFFF"))  # Output: 60
 # print(checkout("ABCD"))  # Output: 115
 # print(checkout("AAABB"))  # Output: 175
 # print(checkout("E"))  # Output: -1 (Illegal input)
+
 
