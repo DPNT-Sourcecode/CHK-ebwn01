@@ -63,7 +63,7 @@ def checkout(skus):
                     total_price += offer_count * offer_item
                     count -= offer_count * offer_quantity
                 else:
-                    if offer_item == product and count >= 3:
+                    if offer_item == product and count >= offer_quantity + 1:
                         increased = 0
                         toRemove = 0
                         for i in range(count):
@@ -92,11 +92,11 @@ def checkout(skus):
 
 
 # Test cases
-checkout("FFFFFF")
-# print(checkout("FF"))  # Output: 50
+print(checkout("UUU"))  # Output: 50
 # print(checkout("FFF"))  # Output: 45
 # print(checkout("FFFF"))  # Output: 60
 # print(checkout("ABCD"))  # Output: 115
 # print(checkout("AAABB"))  # Output: 175
 # print(checkout("E"))  # Output: -1 (Illegal input)
+
 
