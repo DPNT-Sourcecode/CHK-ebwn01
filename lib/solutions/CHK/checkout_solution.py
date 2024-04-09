@@ -11,6 +11,8 @@ def checkout(skus):
         'E': {'price': 40, 'offers': [(2, 'B')]}
     }
 
+    # reverse skus:
+     
     # Initialize counts for each product
     product_counts = {}
     for item in skus:
@@ -31,6 +33,10 @@ def checkout(skus):
             offer_quantity, offer_item = offer
             print("offer item is: ", offer_item)
             if offer_quantity <= count:
+                if isinstance(offer_item, int):
+                    print("its a number")
+                else:
+                    print("its a product")
                 if offer_item in product_counts:
                     offer_count = min(product_counts[offer_item], count // offer_quantity)
                     total_price += offer_count * price
@@ -52,5 +58,6 @@ print("Total price:", checkout(basket))  # Output: 210
 # print(checkout("ABCD"))  # Output: 115
 # print(checkout("AAABB"))  # Output: 175
 # print(checkout("E"))  # Output: -1 (Illegal input)
+
 
 
