@@ -36,20 +36,19 @@ def checkout(skus):
         # Check if there are any special offers for this product
         for offer in offers:
             offer_quantity, offer_item = offer
-            print("offer item is: ", offer_item)
             if offer_quantity <= count:
                 if isinstance(offer_item, int):
                     offer_count =  count // offer_quantity
                     total_price += offer_count * offer_item
                     count -= offer_count * offer_quantity
-                    print("its a number")
                 else:
-                    if offer_item == "F":
+                    if offer_item == product: 
                         print("the offer item is F")
+                        offer_count =  count // offer_quantity
+                        print("this offer can be applied: ", offer_count)
                     if offer_item in product_counts: # if the offer item exists in our SKU 
                         offer_count =  count // offer_quantity
                         product_counts[offer_item] -= offer_count
-                        print("its a product")
         total_price += count * price
 
     return total_price
@@ -66,5 +65,6 @@ print("Total price:", checkout(basket))  # Output: 530
 # print(checkout("ABCD"))  # Output: 115
 # print(checkout("AAABB"))  # Output: 175
 # print(checkout("E"))  # Output: -1 (Illegal input)
+
 
 
