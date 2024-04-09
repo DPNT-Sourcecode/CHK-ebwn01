@@ -21,9 +21,9 @@ def checkout(skus):
     for product, count in product_counts.items():
         price = prices[product]
         if product in special_offers:
-            special_count, special_price = special_offers[product]
-            special_total = (count // special_count) * special_price
-            remaining_count = count % special_count
+            required_count, special_price = special_offers[product]
+            special_total = (count // required_count) * special_price
+            remaining_count = count % required_count
             total_price += special_total + remaining_count * price
         else:
             total_price += count * price
@@ -37,5 +37,6 @@ print(checkout("CCC"))  # Output: 60
 print(checkout("ABCD"))  # Output: 115
 print(checkout("AAABB"))  # Output: 175
 print(checkout("E"))  # Output: -1 (Illegal input)
+
 
 
