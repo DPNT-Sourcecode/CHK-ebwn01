@@ -64,6 +64,7 @@ def checkout(skus):
                     if prod in product_counts:
                         num_of_eligible_items += product_counts[prod]
                 offer_count = num_of_eligible_items // offer_quantity
+                print(offer_count)
                 total_price += offer_count * offer_price
                 for prod in offered_items:
                     if prod in product_counts:
@@ -108,10 +109,11 @@ def checkout(skus):
 
 
 # Test cases
-print(checkout("XXXYYYZZZZ"))  # Output: 50
+print(checkout("SSS"))  # Output: 50
 # print(checkout("FFF"))  # Output: 45
 # print(checkout("FFFF"))  # Output: 60
 # print(checkout("ABCD"))  # Output: 115
 # print(checkout("AAABB"))  # Output: 175
 # print(checkout("E"))  # Output: -1 (Illegal input)
+
 
