@@ -47,7 +47,7 @@ def checkout(skus):
                         toRemove = 0
                         for i in range(count):
                             increased +=1
-                            if increased == 2:
+                            if increased == offer_quantity:
                                 toRemove +=1
                                 increased = -1
                         # print(toRemove)
@@ -78,6 +78,7 @@ checkout("FFFFFF")
 # print(checkout("ABCD"))  # Output: 115
 # print(checkout("AAABB"))  # Output: 175
 # print(checkout("E"))  # Output: -1 (Illegal input)
+
 
 
 
