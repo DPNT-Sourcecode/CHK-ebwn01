@@ -121,12 +121,3 @@ print(checkout("SSSX"))  # Output: 50
 # print(checkout("AAABB"))  # Output: 175
 # print(checkout("E"))  # Output: -1 (Illegal input)
 
-
-
-
-
-
-
-
-
-
