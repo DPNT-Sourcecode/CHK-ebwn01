@@ -4,13 +4,34 @@
 # skus = unicode string
 def checkout(skus):
     price_table = {
-        'A': {'price': 50, 'offers': [(5, 200), (3, 130)]},
-        'B': {'price': 30, 'offers': [(2, 45)]},
-        'C': {'price': 20, 'offers': []},
-        'D': {'price': 15, 'offers': []},
-        'E': {'price': 40, 'offers': [(2, 'B')]},
-        'F': {'price': 10, 'offers': [(2, 'F')]}
-    }
+    'A': {'price': 50, 'offers': [(5, 200), (3, 130)]},
+    'B': {'price': 30, 'offers': [(2, 45)]},
+    'C': {'price': 20, 'offers': []},
+    'D': {'price': 15, 'offers': []},
+    'E': {'price': 40, 'offers': [(2, 'B')]},
+    'F': {'price': 10, 'offers': [(2, 'F')]},
+    'G': {'price': 20, 'offers': []},
+    'H': {'price': 10, 'offers': [(10, 80), (5, 45)]},
+    'I': {'price': 35, 'offers': []},
+    'J': {'price': 60, 'offers': []},
+    'K': {'price': 80, 'offers': [(2, 150)]},
+    'L': {'price': 90, 'offers': []},
+    'M': {'price': 15, 'offers': []},
+    'N': {'price': 40, 'offers': [(3, 'M')]},
+    'O': {'price': 10, 'offers': []},
+    'P': {'price': 50, 'offers': [(5, 200)]},
+    'Q': {'price': 30, 'offers': [(3, 80)]},
+    'R': {'price': 50, 'offers': [(3, 'Q')]},
+    'S': {'price': 30, 'offers': []},
+    'T': {'price': 20, 'offers': []},
+    'U': {'price': 40, 'offers': [(3, 'U')]},
+    'V': {'price': 50, 'offers': [(3, 130), (2, 90)]},
+    'W': {'price': 20, 'offers': []},
+    'X': {'price': 90, 'offers': []},
+    'Y': {'price': 10, 'offers': []},
+    'Z': {'price': 50, 'offers': []}
+}
+
 
     # reverse skus:
     sorted_reversed_skus = ''.join(sorted(skus, reverse=True))
@@ -78,7 +99,4 @@ checkout("FFFFFF")
 # print(checkout("ABCD"))  # Output: 115
 # print(checkout("AAABB"))  # Output: 175
 # print(checkout("E"))  # Output: -1 (Illegal input)
-
-
-
 
