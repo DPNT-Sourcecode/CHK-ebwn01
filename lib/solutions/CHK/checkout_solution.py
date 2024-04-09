@@ -14,7 +14,7 @@ def checkout(skus):
     'H': {'price': 10, 'offers': [(10, 80), (5, 45)]},
     'I': {'price': 35, 'offers': []},
     'J': {'price': 60, 'offers': []},
-    'K': {'price': 80, 'offers': [(2, 150)]},
+    'K': {'price': 70, 'offers': [(2, 120)]},
     'L': {'price': 90, 'offers': []},
     'M': {'price': 15, 'offers': []},
     'N': {'price': 40, 'offers': [(3, 'M')]},
@@ -22,15 +22,16 @@ def checkout(skus):
     'P': {'price': 50, 'offers': [(5, 200)]},
     'Q': {'price': 30, 'offers': [(3, 80)]},
     'R': {'price': 50, 'offers': [(3, 'Q')]},
-    'S': {'price': 30, 'offers': []},
-    'T': {'price': 20, 'offers': []},
+    'S': {'price': 20, 'offers': [(3, 45, ['S', 'T', 'X', 'Y', 'Z'])]},
+    'T': {'price': 20, 'offers': [(3, 45, ['S', 'T', 'X', 'Y', 'Z'])]},
     'U': {'price': 40, 'offers': [(3, 'U')]},
     'V': {'price': 50, 'offers': [(3, 130), (2, 90)]},
     'W': {'price': 20, 'offers': []},
-    'X': {'price': 90, 'offers': []},
-    'Y': {'price': 10, 'offers': []},
-    'Z': {'price': 50, 'offers': []}
+    'X': {'price': 17, 'offers': [(3, 45, ['S', 'T', 'X', 'Y', 'Z'])]},
+    'Y': {'price': 20, 'offers': [(3, 45, ['S', 'T', 'X', 'Y', 'Z'])]},
+    'Z': {'price': 21, 'offers': [(3, 45, ['S', 'T', 'X', 'Y', 'Z'])]}
 }
+
 
 
     # reverse skus:
@@ -98,5 +99,6 @@ print(checkout("UUU"))  # Output: 50
 # print(checkout("ABCD"))  # Output: 115
 # print(checkout("AAABB"))  # Output: 175
 # print(checkout("E"))  # Output: -1 (Illegal input)
+
 
 
