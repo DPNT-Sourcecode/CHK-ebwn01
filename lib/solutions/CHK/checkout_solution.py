@@ -12,10 +12,14 @@ def checkout(skus):
     }
 
     # reverse skus:
+    sorted_reversed_skus = ''.join(sorted(skus, reverse=True))
+
+    # Print the sorted and reversed string
+    print(sorted_reversed_skus)
      
     # Initialize counts for each product
     product_counts = {}
-    for item in skus:
+    for item in sorted_reversed_skus:
         product_counts[item] = product_counts.get(item, 0) + 1
 
     total_price = 0
@@ -43,8 +47,6 @@ def checkout(skus):
                     if offer_item in product_counts: # if the offer item exists in our SKU 
                         offer_count =  count // offer_quantity
                         product_counts[offer_item] -= offer_count
-                        # total_price += offer_count * offer_item
-                        # count -= offer_count * offer_quantity
                         print("its a product")
         total_price += count * price
 
@@ -62,6 +64,7 @@ print("Total price:", checkout(basket))  # Output: 530
 # print(checkout("ABCD"))  # Output: 115
 # print(checkout("AAABB"))  # Output: 175
 # print(checkout("E"))  # Output: -1 (Illegal input)
+
 
 
 
