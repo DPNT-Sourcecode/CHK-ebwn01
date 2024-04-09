@@ -58,7 +58,12 @@ def checkout(skus):
         # Check if there are any special offers for this product
         for offer in offers:
             if len(offer) == 3:
-                print("special offer")
+                offer_quantity, offer_price, offered_items = offer
+                num_of_eligible_items = 0
+                for prod in offered_items:
+                    if prod in product_counts:
+                        num_of_eligible_items += product_counts[prod]
+                print(num_of_eligible_items)
             else:
                 offer_quantity, offer_item = offer
                 if offer_quantity <= count:
@@ -102,6 +107,7 @@ print(checkout("XYZ"))  # Output: 50
 # print(checkout("ABCD"))  # Output: 115
 # print(checkout("AAABB"))  # Output: 175
 # print(checkout("E"))  # Output: -1 (Illegal input)
+
 
 
 
