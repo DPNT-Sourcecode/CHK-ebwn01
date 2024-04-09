@@ -39,6 +39,7 @@ def checkout(skus):
                     count -= offer_count * offer_quantity
                     print("its a number")
                 else:
+                    print("the offer is an item!")
                     if offer_item in product_counts:
                         print("its a product")
         total_price += count * price
@@ -47,7 +48,7 @@ def checkout(skus):
 
 # Example usage:
 basket = "AAAAAAAAABBEEE"
-print("Total price:", checkout(basket))  # Output: 210
+print("Total price:", checkout(basket))  # Output: 530
 
 
 # # Test cases
@@ -57,6 +58,7 @@ print("Total price:", checkout(basket))  # Output: 210
 # print(checkout("ABCD"))  # Output: 115
 # print(checkout("AAABB"))  # Output: 175
 # print(checkout("E"))  # Output: -1 (Illegal input)
+
 
 
 
