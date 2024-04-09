@@ -73,5 +73,3 @@ print(checkout("FFFF"))  # Output: 60
 # print(checkout("AAABB"))  # Output: 175
 # print(checkout("E"))  # Output: -1 (Illegal input)
 
-
-
