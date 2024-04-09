@@ -8,7 +8,8 @@ def checkout(skus):
         'B': {'price': 30, 'offers': [(2, 45)]},
         'C': {'price': 20, 'offers': []},
         'D': {'price': 15, 'offers': []},
-        'E': {'price': 40, 'offers': [(2, 'B')]}
+        'E': {'price': 40, 'offers': [(2, 'B')]},
+        'F': {'price': 10, 'offers': [(2, 'F')]}
     }
 
     # reverse skus:
@@ -43,7 +44,8 @@ def checkout(skus):
                     count -= offer_count * offer_quantity
                     print("its a number")
                 else:
-                    print("the offer is an item!")
+                    if offer_item == "F":
+                        print("the offer item is F")
                     if offer_item in product_counts: # if the offer item exists in our SKU 
                         offer_count =  count // offer_quantity
                         product_counts[offer_item] -= offer_count
@@ -53,7 +55,7 @@ def checkout(skus):
     return total_price
 
 # Example usage:
-basket = "AAAAAAAAABBEEE"
+basket = "AAAAAAAAABBEEEFFF"
 print("Total price:", checkout(basket))  # Output: 530
 
 
@@ -64,4 +66,5 @@ print("Total price:", checkout(basket))  # Output: 530
 # print(checkout("ABCD"))  # Output: 115
 # print(checkout("AAABB"))  # Output: 175
 # print(checkout("E"))  # Output: -1 (Illegal input)
+
 
