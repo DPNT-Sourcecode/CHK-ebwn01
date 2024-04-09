@@ -50,12 +50,12 @@ def checkout(skus):
                             if increased == 2:
                                 toRemove +=1
                                 increased = -1
-                        print(toRemove)
+                        # print(toRemove)
                         # print("the offer item is F")
-                        offer_count =  count // offer_quantity
+                        # offer_count =  count // offer_quantity
                         # print("this offer can be applied: ", offer_count)
                         # print(f"the count of {product} was {count}")
-                        count -= offer_count
+                        count -= toRemove
                         # print(f"the count of {product} now is {count}")
                     else :
                         if offer_item in product_counts: # if the offer item exists in our SKU 
@@ -78,5 +78,6 @@ checkout("FFFFFF")
 # print(checkout("ABCD"))  # Output: 115
 # print(checkout("AAABB"))  # Output: 175
 # print(checkout("E"))  # Output: -1 (Illegal input)
+
 
 
