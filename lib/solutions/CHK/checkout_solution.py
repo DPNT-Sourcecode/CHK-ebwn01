@@ -42,12 +42,14 @@ def checkout(skus):
                     total_price += offer_count * offer_item
                     count -= offer_count * offer_quantity
                 else:
-                    if offer_item == product and count >= 3: 
+                    if offer_item == product: 
                         # print("the offer item is F")
                         offer_count =  count // offer_quantity
                         # print("this offer can be applied: ", offer_count)
                         # print(f"the count of {product} was {count}")
-                        count -= offer_count
+                        for i in range(offer_count):
+                            if count >=3:
+                                count -= offer_count
                         # print(f"the count of {product} now is {count}")
                     else :
                         if offer_item in product_counts: # if the offer item exists in our SKU 
@@ -62,11 +64,12 @@ def checkout(skus):
 # print("Total price:", checkout(basket))  # Output: 530
 
 
-# # Test cases
-# print(checkout("A"))  # Output: 50
-# print(checkout("BB"))  # Output: 45
-# print(checkout("CCC"))  # Output: 60
+# Test cases
+print(checkout("FF"))  # Output: 50
+print(checkout("FFF"))  # Output: 45
+print(checkout("FFFF"))  # Output: 60
 # print(checkout("ABCD"))  # Output: 115
 # print(checkout("AAABB"))  # Output: 175
 # print(checkout("E"))  # Output: -1 (Illegal input)
+
 
