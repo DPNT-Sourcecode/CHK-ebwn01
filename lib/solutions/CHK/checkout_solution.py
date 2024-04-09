@@ -47,7 +47,8 @@ def checkout(skus):
                         offer_count =  count // offer_quantity
                         # print("this offer can be applied: ", offer_count)
                         # print(f"the count of {product} was {count}")
-                        for i in range(offer_count):
+                        for _ in range(offer_count):
+                            print(count)
                             if count >=3:
                                 count -= offer_count
                         # print(f"the count of {product} now is {count}")
@@ -71,5 +72,6 @@ print(checkout("FFFF"))  # Output: 60
 # print(checkout("ABCD"))  # Output: 115
 # print(checkout("AAABB"))  # Output: 175
 # print(checkout("E"))  # Output: -1 (Illegal input)
+
 
 
