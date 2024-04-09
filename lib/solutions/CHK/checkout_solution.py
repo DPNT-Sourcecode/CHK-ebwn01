@@ -101,10 +101,11 @@ def checkout(skus):
 
 
 # Test cases
-print(checkout("XYZ"))  # Output: 50
+print(checkout("XXXYYYZZZZ"))  # Output: 50
 # print(checkout("FFF"))  # Output: 45
 # print(checkout("FFFF"))  # Output: 60
 # print(checkout("ABCD"))  # Output: 115
 # print(checkout("AAABB"))  # Output: 175
 # print(checkout("E"))  # Output: -1 (Illegal input)
+
 
