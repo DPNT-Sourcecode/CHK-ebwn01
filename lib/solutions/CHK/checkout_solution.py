@@ -57,32 +57,35 @@ def checkout(skus):
 
         # Check if there are any special offers for this product
         for offer in offers:
-            offer_quantity, offer_item = offer
-            if offer_quantity <= count:
-                if isinstance(offer_item, int):
-                    offer_count =  count // offer_quantity
-                    total_price += offer_count * offer_item
-                    count -= offer_count * offer_quantity
-                else:
-                    if offer_item == product and count >= offer_quantity + 1:
-                        increased = 0
-                        toRemove = 0
-                        for i in range(count):
-                            increased +=1
-                            if increased == offer_quantity:
-                                toRemove +=1
-                                increased = -1
-                        # print(toRemove)
-                        # print("the offer item is F")
-                        # offer_count =  count // offer_quantity
-                        # print("this offer can be applied: ", offer_count)
-                        # print(f"the count of {product} was {count}")
-                        count -= toRemove
-                        # print(f"the count of {product} now is {count}")
-                    else :
-                        if offer_item in product_counts: # if the offer item exists in our SKU 
-                            offer_count =  count // offer_quantity
-                            product_counts[offer_item] -= offer_count
+            if len(offer) == 3:
+                print("special offer")
+            else:
+                offer_quantity, offer_item = offer
+                if offer_quantity <= count:
+                    if isinstance(offer_item, int):
+                        offer_count =  count // offer_quantity
+                        total_price += offer_count * offer_item
+                        count -= offer_count * offer_quantity
+                    else:
+                        if offer_item == product and count >= offer_quantity + 1:
+                            increased = 0
+                            toRemove = 0
+                            for i in range(count):
+                                increased +=1
+                                if increased == offer_quantity:
+                                    toRemove +=1
+                                    increased = -1
+                            # print(toRemove)
+                            # print("the offer item is F")
+                            # offer_count =  count // offer_quantity
+                            # print("this offer can be applied: ", offer_count)
+                            # print(f"the count of {product} was {count}")
+                            count -= toRemove
+                            # print(f"the count of {product} now is {count}")
+                        else :
+                            if offer_item in product_counts: # if the offer item exists in our SKU 
+                                offer_count =  count // offer_quantity
+                                product_counts[offer_item] -= offer_count
         total_price += count * price
 
     return total_price
@@ -93,12 +96,13 @@ def checkout(skus):
 
 
 # Test cases
-print(checkout("UUU"))  # Output: 50
+print(checkout("XYZ"))  # Output: 50
 # print(checkout("FFF"))  # Output: 45
 # print(checkout("FFFF"))  # Output: 60
 # print(checkout("ABCD"))  # Output: 115
 # print(checkout("AAABB"))  # Output: 175
 # print(checkout("E"))  # Output: -1 (Illegal input)
+
 
 
 
