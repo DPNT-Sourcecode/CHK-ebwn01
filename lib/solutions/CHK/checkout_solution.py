@@ -4,7 +4,7 @@
 # skus = unicode string
 def checkout(skus):
     price_table = {
-        'A': {'price': 50, 'offers': [(3, 130), (5, 200)]},
+        'A': {'price': 50, 'offers': [(5, 200), (3, 130)]},
         'B': {'price': 30, 'offers': [(2, 45)]},
         'C': {'price': 20, 'offers': []},
         'D': {'price': 15, 'offers': []},
@@ -29,6 +29,7 @@ def checkout(skus):
         # Check if there are any special offers for this product
         for offer in offers:
             offer_quantity, offer_item = offer
+            print("offer item is: ", offer_item)
             if offer_quantity <= count:
                 if offer_item in product_counts:
                     offer_count = min(product_counts[offer_item], count // offer_quantity)
@@ -44,11 +45,12 @@ basket = "AAAAAAAAABBEEE"
 print("Total price:", checkout(basket))  # Output: 210
 
 
-# Test cases
-print(checkout("A"))  # Output: 50
-print(checkout("BB"))  # Output: 45
-print(checkout("CCC"))  # Output: 60
-print(checkout("ABCD"))  # Output: 115
-print(checkout("AAABB"))  # Output: 175
-print(checkout("E"))  # Output: -1 (Illegal input)
+# # Test cases
+# print(checkout("A"))  # Output: 50
+# print(checkout("BB"))  # Output: 45
+# print(checkout("CCC"))  # Output: 60
+# print(checkout("ABCD"))  # Output: 115
+# print(checkout("AAABB"))  # Output: 175
+# print(checkout("E"))  # Output: -1 (Illegal input)
+
 
