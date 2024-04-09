@@ -17,7 +17,7 @@ def checkout(skus):
         product_counts[item] = product_counts.get(item, 0) + 1
 
     total_price = 0
-
+    print(product_counts)
     # Iterate over each product and apply discounts
     for product, count in product_counts.items():
         if product not in price_table:
@@ -40,7 +40,7 @@ def checkout(skus):
     return total_price
 
 # Example usage:
-basket = "AAAAAAAAABBEE"
+basket = "AAAAAAAAABBEEE"
 print("Total price:", checkout(basket))  # Output: 210
 
 
@@ -51,7 +51,4 @@ print(checkout("CCC"))  # Output: 60
 print(checkout("ABCD"))  # Output: 115
 print(checkout("AAABB"))  # Output: 175
 print(checkout("E"))  # Output: -1 (Illegal input)
-
-
-
 
