@@ -34,14 +34,13 @@ def checkout(skus):
             print("offer item is: ", offer_item)
             if offer_quantity <= count:
                 if isinstance(offer_item, int):
+                    offer_count =  count // offer_quantity
+                    total_price += offer_count * offer_item
+                    count -= offer_count * offer_quantity
                     print("its a number")
                 else:
-                    print("its a product")
-                if offer_item in product_counts:
-                    offer_count = min(product_counts[offer_item], count // offer_quantity)
-                    total_price += offer_count * price
-                    count -= offer_count * offer_quantity
-
+                    if offer_item in product_counts:
+                        print("its a product")
         total_price += count * price
 
     return total_price
@@ -58,6 +57,7 @@ print("Total price:", checkout(basket))  # Output: 210
 # print(checkout("ABCD"))  # Output: 115
 # print(checkout("AAABB"))  # Output: 175
 # print(checkout("E"))  # Output: -1 (Illegal input)
+
 
 
 
