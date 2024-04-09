@@ -65,9 +65,3 @@ print("Total price:", checkout(basket))  # Output: 530
 # print(checkout("AAABB"))  # Output: 175
 # print(checkout("E"))  # Output: -1 (Illegal input)
 
-
-
-
-
-
-
