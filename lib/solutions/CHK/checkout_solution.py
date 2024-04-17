@@ -57,12 +57,14 @@ def checkout(skus):
                     if prod in product_counts:
                          num_of_eligible_items += product_counts[prod]
                 offer_count = num_of_eligible_items // offer_quantity
+                print("offer count is", offer_count)
                 total_price += offer_count * offer_price
 
                 # First thing to do is remove the number of eligible items starting from the smallest
                 copied_dict = product_counts.copy()
                 for _ in range(offer_quantity * offer_count):
                     min_key = min(copied_dict, key=product_counts.get)
+                    print("the minimum key is", min_key)
                     if copied_dict[min_key] > 0:
                         copied_dict[min_key] -= 1
                         product_counts[min_key] = copied_dict[min_key]
@@ -97,3 +99,4 @@ def checkout(skus):
     return total_price
 
 print(checkout("ZZZS"))
+
