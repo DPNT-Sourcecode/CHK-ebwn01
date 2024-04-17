@@ -67,7 +67,9 @@ def checkout(skus):
                 for _ in range(offer_quantity * offer_count):
                     key_with_highest_price = max(copied_dict, key=lambda k: copied_dict[k][1])
                     print("highest price key is", key_with_highest_price)
-                    if copied_dict[min_key] > 0:
+                    highest_price_count, highest_price = copied_dict[key_with_highest_price]
+                    print("count of highest is ", highest_price_count)
+                    if copied_dict.get(key_with_highest_price, [0])[0]:
                         copied_dict[min_key] -= 1
                         product_counts[min_key] = copied_dict[min_key]
                     if copied_dict[min_key] == 0:
@@ -101,4 +103,5 @@ def checkout(skus):
     return total_price
 
 print(checkout("ZZZS"))
+
 
