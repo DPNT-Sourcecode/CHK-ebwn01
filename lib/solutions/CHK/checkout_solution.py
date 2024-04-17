@@ -62,10 +62,11 @@ def checkout(skus):
                 print("so we are adding ", total_price)
 
                 # First thing to do is remove the number of eligible items starting from the most expensive one
-                copied_dict = {key: value for key, value in product_counts.items() if key in offered_items}
+                copied_dict = {key: [value, price_table[key]['price']] for key, value in product_counts.items() if key in offered_items}
+                print("the copied dict is ", copied_dict)
                 for _ in range(offer_quantity * offer_count):
-                    min_key = min(copied_dict, key=product_counts.get)
-                    print("the minimum key is", min_key)
+                    key_with_highest_price = max(copied_dict, key=lambda k: copied_dict[k][1])
+                    print("highest price key is", key_with_highest_price)
                     if copied_dict[min_key] > 0:
                         copied_dict[min_key] -= 1
                         product_counts[min_key] = copied_dict[min_key]
@@ -100,3 +101,4 @@ def checkout(skus):
     return total_price
 
 print(checkout("ZZZS"))
+
