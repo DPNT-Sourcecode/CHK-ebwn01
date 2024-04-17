@@ -57,9 +57,9 @@ def checkout(skus):
                     if prod in product_counts:
                          num_of_eligible_items += product_counts[prod]
                 offer_count = num_of_eligible_items // offer_quantity
-                print("offer count is", offer_count)
                 total_price += offer_count * offer_price
-
+                print("offer count is", offer_count)
+                print("so we are adding ", total_price)
                 # First thing to do is remove the number of eligible items starting from the smallest
                 copied_dict = product_counts.copy()
                 for _ in range(offer_quantity * offer_count):
@@ -99,4 +99,5 @@ def checkout(skus):
     return total_price
 
 print(checkout("ZZZS"))
+
 
